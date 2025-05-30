@@ -1,67 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>Demo Page with Redirect Image</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo Video Thumbnail with Redirect</title>
 
-    <!-- Facebook Open Graph Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Demo Page Title" />
-    <meta property="og:description" content="This is a demo page description for social sharing." />
-    <meta property="og:url" content="https://yourwebsite.com/demo-page" />
-    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Demo+Image" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+  <!-- Facebook Open Graph Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Watch the Amazing Video Now!" />
+  <meta property="og:description" content="Click the thumbnail to watch the exciting video." />
+  <meta property="og:url" content="https://yourwebsite.com/demo-video" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Video+Thumbnail" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Demo Page Title" />
-    <meta name="twitter:description" content="This is a demo page description for social sharing." />
-    <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Demo+Image" />
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Watch the Amazing Video Now!" />
+  <meta name="twitter:description" content="Click the thumbnail to watch the exciting video." />
+  <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Video+Thumbnail" />
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .thumbnail-container {
-            cursor: pointer;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            max-width: 800px;
-            width: 100%;
-        }
-        .thumbnail-container img {
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-        .thumbnail-container:hover img {
-            transform: scale(1.05);
-        }
-    </style>
+  <style>
+    body {
+      margin: 0;
+      background: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    .thumbnail-container {
+      position: relative;
+      cursor: pointer;
+      max-width: 800px;
+      width: 90vw;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      transition: box-shadow 0.3s ease;
+    }
+    .thumbnail-container:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+    }
+    .thumbnail-container img {
+      display: block;
+      width: 100%;
+      height: auto;
+      user-select: none;
+      pointer-events: none; /* Prevent image from interfering with click */
+    }
+    /* Fake play button overlay */
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+    .thumbnail-container:hover .play-button {
+      background: rgba(0, 0, 0, 0.8);
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+    }
+    .play-button svg {
+      fill: white;
+      width: 36px;
+      height: 36px;
+      margin-left: 4px; /* for the triangle shape */
+    }
+  </style>
 </head>
 <body>
 
-    <div class="thumbnail-container" id="thumbnailContainer" title="Click to open link">
-        <img src="https://liveindia.tv/wp-content/uploads/2025/01/trailer_war-2.jpg" alt="Demo Image" />
+  <div class="thumbnail-container" id="thumbnailContainer" title="Click to watch video">
+    <img
+      src="https://liveindia.tv/wp-content/uploads/2025/01/trailer_war-2.jpg?text=Video+Thumbnail"
+      alt="Video Thumbnail"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="play-button" aria-label="Play Video" role="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
     </div>
+  </div>
 
-    <script>
-        const REDIRECT_URL = 'https://gaamesplay.online';
+  <script>
+    const REDIRECT_URL = "https://gaamesplay.online";
 
-        document.getElementById('thumbnailContainer').addEventListener('click', function() {
-            window.location.href = REDIRECT_URL;
-        });
-    </script>
+    document.getElementById("thumbnailContainer").addEventListener("click", () => {
+      window.location.href = REDIRECT_URL;
+    });
+  </script>
 
 </body>
 </html>
